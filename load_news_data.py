@@ -2,11 +2,12 @@ import pandas as pd
 import chromadb
 from langchain.embeddings import SentenceTransformerEmbeddings
 from langchain.vectorstores import Chroma
+from get_news_data import get_news
 
 
 chroma_client = chromadb.PersistentClient(path='chroma_rss')
 sentence_transformer_ef = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
-merged_country_news = pd.read_csv('merged_country_news.csv')
+merged_country_news = get_news()
 
 texts = []
 metadatas = []
